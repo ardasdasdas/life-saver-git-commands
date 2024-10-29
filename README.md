@@ -15,6 +15,9 @@ A repository that contains life and timer saver git commands; rollback, revert, 
 - [How to delete a stash record from the list?](#how-to-delete-a-stash-record-from-the-list)
 - [How to move latest changes to stash with different branch?](#how-to-move-latest-changes-to-stash-with-different-branch)
 - [How to visualize all git logs?](#how-to-visualize-all-git-logs)
+- [How to move last commit to another branch?](#how-to-move-last-commit-to-another-branch)
+- [How to change last commit message?](#how-to-change-last-commit-message)
+- [How to add new changes to the last commit?](#how-to-add-new-changes-to-the-last-commit)
 
 
 <hr/>
@@ -101,5 +104,28 @@ git stash save "Your stash message"
 #### How to visualize all git logs?
  ```bash
  git log --oneline --graph --decorate --all
+ ```
+
+#### How to move last commit to another branch?
+ ```bash
+ # undo the last commit and leave the your changes available
+git reset HEAD~ --soft
+git stash
+# move to the correct branch
+git checkout name-of-the-correct-branch
+git stash pop
+ ```
+
+#### How to change last commit message?
+ ```bash
+git commit --amend
+ ```
+
+#### How to add new changes to the last commit?
+ ```bash
+# make your change
+git add . 
+git commit --amend --no-edit
+# !!NEVER AMEND PUBLIC COMMITS!!
  ```
 
